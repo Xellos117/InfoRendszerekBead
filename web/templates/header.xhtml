@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<h:body>
+    <div id="top" class="top">
+        <p:menubar>
+            <p:menuitem value="Home" url="index.xhtml" />
+            <p:submenu label="Tagok">
+                <p:menuitem value="Tagok listázása" url="tagok.xhtml"/>
+                <p:menuitem value="Tag hozzáadása" url="addTag.xhtml"/>
+            </p:submenu>
+            <p:submenu label="Könyv">
+                <p:menuitem value="Könyvek listázása" url="konyvek.xhtml"/>
+                <p:menuitem value="Könyv hozzáadása" url ="addKonyv.xhtml"/>
+            </p:submenu>
+        </p:menubar>
+    </div>
+</h:body>
+</html>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Konyvek</title>
+</h:head>
+<h:body>
+    <ui:composition template="templates/common.xhtml">
+        <ui:define name="content">
+            <h:form>
+                <p:dataTable var="konyvek" value="#{konyvView.konyvek}"  style="width: 100%" rows="10"  paginator="true"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="5,10,15">
+
+                    <p:column filterBy="#{konyvek.statusz}" headerText="Státusz">
+                        <h:outputText value="#{konyvek.statusz}" rendered="#{konyvek.id != konyvView.editedKonyv.id}"/>
+
+                        <p:selectOneMenu value="#{konyvView.editedKonyv.statusz}" size="13" rendered="#{konyvek.id == konyvView.editedKonyv.id}">
+                            <f:selectItem itemLabel="Available" itemValue="Available" />
+                            <f:selectItem itemLabel="Selejtezett" itemValue="Selejtezett" />
+                        </p:selectOneMenu>
+                    </p:column>
+
+                    <p:column filterBy="#{konyvek.szerzo}" headerText="Szerzo">
+                        <h:outputText value="#{konyvek.szerzo}" rendered="#{konyvek.id != konyvView.editedKonyv.id}"/>
+                        <p:inputText value="#{konyvView.editedKonyv.szerzo}" size="13"  rendered="#{konyvek.id == konyvView.editedKonyv.id}"/>
+                    </p:column>
+
+                    <p:column filterBy="#{konyvek.cim}" headerText="Cím">
+                        <h:outputText value="#{konyvek.cim}" rendered="#{konyvek.id != konyvView.editedKonyv.id}"/>
+                        <p:inputText value="#{konyvView.editedKonyv.cim}" size="13"  rendered="#{konyvek.id == konyvView.editedKonyv.id}"/>
+                    </p:column>
+
+                    <p:column filterBy="#{konyvek.beszerzes}" headerText="Beszerzés">
+                        <h:outputText value="#{konyvek.beszerzes}" rendered="#{konyvek.id != konyvView.editedKonyv.id}">
+                            <f:convertDateTime pattern="yyyy.MM.dd" />
+                        </h:outputText>
+                        <p:inputMask value="#{konyvView.editedKonyv.beszerzes}" size="13" rendered="#{konyvek.id == konyvView.editedKonyv.id}" mask="9999.99.99">
+                            <f:convertDateTime pattern="yyyy.MM.dd"/>
+                        </p:inputMask>
+                    </p:column>
+
+                    <p:column filterBy="#{konyvek.sorszam}" headerText="Sorszám">
+                        <h:outputText value="#{konyvek.sorszam}" rendered="#{konyvek.id != konyvView.editedKonyv.id}"/>
+                        <p:inputText value="#{konyvView.editedKonyv.sorszam}" size="13" rendered="#{konyvek.id == konyvView.editedKonyv.id}"/>
+                    </p:column>
+
+                    <p:column headerText="Törlés">
+                        <p:commandButton value="Törlés" rendered="#{konyvek.statusz != 'Rented' and !konyvView.konyvekIsEdited}" action="#{konyvView.deleteKonyv(konyvek)}"/>
+                    </p:column>
+                    <p:column headerText="Szerkesztés">
+                        <p:commandButton id="editBtn" value="Szerkesztés" rendered="#{konyvek.statusz != 'Rented' and !konyvView.konyvekIsEdited}" action="#{konyvView.selectKonyvToedit(konyvek)}"/>
+                        <p:commandButton value="Mentés" rendered="#{konyvek.statusz != 'Rented' and konyvView.konyvekIsEdited and konyvek.id == konyvView.editedKonyv.id}" action="#{konyvView.saveEditedKonyv}"/>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </ui:define>
+
+    </ui:composition>
+
+</h:body>
+</html>

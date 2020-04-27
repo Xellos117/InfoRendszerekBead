@@ -1,0 +1,14 @@
+Gnadig\dataConnect\HibernateUtil.class
+Gnadig\view\TagView.class
+Gnadig\DTO\DTOKonyvek.class
+Gnadig\model\KiKolcsonzott.class
+Gnadig\model\Kolcsonzes.class
+Gnadig\service\TagService.class
+Gnadig\model\Tagok.class
+Gnadig\DTO\GenerateKiKolcsonzottLista.class
+Gnadig\DTO\DTOTagok.class
+Gnadig\DTO\DTOKolcsonzes.class
+Gnadig\model\Konyvek.class
+Gnadig\view\KonyvekView.class
+Gnadig\service\KonyvService.class
+Gnadig\Main.class

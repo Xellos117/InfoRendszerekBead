@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+    <ui:composition template="templates/common.xhtml">
+        <ui:define name="content">
+            <h:form>
+                <h2>tag adatai:</h2>
+                <p:panelGrid columns="2" style="width: 50%">
+
+                    <h:outputText value="Name:"/>
+                    <h:outputText value="#{tagView.kivalasztottTag.nev}" rendered="#{not tagView.edit}"/>
+                    <p:inputText value="#{tagView.szerksztettTag.nev}" rendered="#{tagView.edit}"/>
+
+                    <h:outputText value="Tel:"/>
+                    <h:outputText value="#{tagView.kivalasztottTag.telefonszam}" rendered="#{not tagView.edit}"/>
+                    <p:inputMask value="#{tagView.szerksztettTag.telefonszam}" rendered="#{tagView.edit}" mask="99-99-999-99-99"/>
+
+                    <h:outputText value="Lakcím:"/>
+                    <h:outputText value="#{tagView.kivalasztottTag.lakcim}" rendered="#{not tagView.edit}"/>
+                    <p:inputText value="#{tagView.szerksztettTag.lakcim}" rendered="#{tagView.edit}"/>
+
+                    <h:outputText value="Szezmelyigazolvany:"/>
+                    <h:outputText value="#{tagView.kivalasztottTag.szemelyig}" rendered="#{not tagView.edit}"/>
+                    <p:inputMask value="#{tagView.szerksztettTag.szemelyig}" rendered="#{tagView.edit}" mask="999999aa"/>
+
+
+                </p:panelGrid>
+                <p:commandButton value="Edit" action="#{tagView.szerkeszthetosegTiltasa}" rendered="#{!tagView.edit}"/>
+                <p:commandButton value="Save" action="#{tagView.saveTag}" rendered="#{tagView.edit}"/>
+                <p:commandButton value="Back" action="tagok.xhtml" />
+            </h:form>
+
+            <h2>Könyvek:</h2>
+            <h:form>
+                <p:dataTable var="konyvek" value="#{konyvView.konyvek}" style="width: 100%" rows="10"  paginator="true"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="5,10,15">
+
+                    <p:column filterBy="#{konyvek.tipus}" headerText="Típus">
+                        <h:outputText value="#{konyvek.tipus}" />
+                    </p:column>
+                    <p:column filterBy="#{konyvek.szerzo}" headerText="Szerző">
+                        <h:outputText value="#{konyvek.szerzo}" />
+                    </p:column>
+                    <p:column filterBy="#{konyvek.cim}" headerText="Cím">
+                        <h:outputText value="#{konyvek.cim}" />
+                    </p:column>
+                    <p:column filterBy="#{konyvek.beszerzes}" headerText="Beszerzes">
+                        <h:outputText value="#{konyvek.beszerzes}" >
+                            <f:convertDateTime pattern="yyyy-MM-dd" />
+                        </h:outputText>
+                    </p:column>
+                    <p:column filterBy="#{konyvek.sorszam}" headerText="Sorszám">
+                        <h:outputText value="#{konyvek.sorszam}" />
+                    </p:column>
+                    <p:column filterBy="#{konyvek.statusz}" headerText="Státusz">
+                        <h:outputText value="#{konyvek.statusz}" />
+                    </p:column>
+
+                    <p:column headerText="Kölcsonzés">
+                        <p:commandButton value="Kölcsönzés" action="#{tagView.saveRenting(konyvek)}" rendered="#{konyvek.statusz != 'Rented'}"/>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+
+            <h2>Kölcsönzött konyvek</h2>
+            <h:form>
+                <p:dataTable var="kolcsonzes" value="#{tagView.kivalasztottTagKolcsonzesei}" style="width: 100%" rows="10"  paginator="true"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="5,10,15">
+
+                    <p:column filterBy="#{konyvek.tipus}" headerText="Típus">
+                        <h:outputText value="#{konyvek.tipus}" />
+                    </p:column>
+                    <p:column filterBy="#{konyvek.szerzo}" headerText="Szerző">
+                        <h:outputText value="#{konyvek.szerzo}" />
+                    </p:column>
+                    <p:column filterBy="#{konyvek.cim}" headerText="Cím">
+                        <h:outputText value="#{konyvek.cim}" />
+                    </p:column>
+                    <p:column filterBy="#{konyvek.beszerzes}" headerText="Beszerzes">
+                        <h:outputText value="#{konyvek.beszerzes}" >
+                            <f:convertDateTime pattern="yyyy-MM-dd" />
+                        </h:outputText>
+                    </p:column>
+                    <p:column filterBy="#{konyvek.sorszam}" headerText="Sorszám">
+                        <h:outputText value="#{konyvek.sorszam}" />
+                    </p:column>
+                    <p:column filterBy="#{konyvek.statusz}" headerText="Státusz">
+                        <h:outputText value="#{konyvek.statusz}" />
+                    </p:column>
+
+                    <p:column headerText="Kölcsonzés kezdete">
+                        <h:outputText value="#{kolcsonzes.kolcsonzesKezdete}">
+                            <f:convertDateTime pattern="yyyy-MM-dd" />
+                        </h:outputText>
+                    </p:column>
+                    <p:column headerText="Kölcsönzés vége">
+                        <h:outputText value="#{kolcsonzes.getKolcsonzesVege}" style="#{tagView.getNapokHatarIdoig(kolcsonzes.getKolcsonzesVege) > 1 ? 'color:red;' : 'color:blue;'}">
+                            <f:convertDateTime pattern="yyyy-MM-dd" />
+                        </h:outputText>
+                    </p:column>
+                    <p:column headerText="Késés">
+                        <h:outputText value="#{tagView.getNapokHatarIdoig(kolcsonzes.getKolcsonzesVege) > 1 ? 'Késik!' : 'Nem Késik'}"
+                                      style="#{tagView.getNapokHatarIdoig(kolcsonzes.getKolcsonzesVege) > 1 ? 'color:red;' : 'color:blue;'}"/>
+                    </p:column>
+                    <p:column headerText="Kölcsönzés törlése">
+                        <p:commandButton value="Visszahoz" action="#{tagView.deleteRenting(kolcsonzes)}"/>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </ui:define>
+
+    </ui:composition>
+
+</h:body>
+</html>
+
+
+
