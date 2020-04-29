@@ -9,27 +9,27 @@ import java.util.Objects;
 @Table(name = "konyvek", schema = "konyvtar")
 public class Konyvek {
 
-    //@Id
-    //@Column(name = "id")
-    //@GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
 
-    //@Column(name = "tipus")
+    @Column(name = "tipus")
     private String tipus;
 
-    //@Column(name = "szerzo")
+    @Column(name = "szerzo")
     private String szerzo;
 
-    //@Column(name = "cim")
+    @Column(name = "cim")
     private String cim;
 
-    //@Column(name = "beszerzes")
+    @Column(name = "beszerzes")
     private Date beszerzes;
 
-    //@Column(name = "sorszam")
+    @Column(name = "sorszam")
     private String sorszam;
 
-    //@Column(name = "statusz")
+    @Column(name = "statusz")
     private String statusz;
 
     public Konyvek(){}
@@ -44,19 +44,20 @@ public class Konyvek {
     }
 
     //getter seter
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+
     public int getId() {
         return id;
+    }
+
+    public String getIdToString(){
+        return String.valueOf(getId());
     }
 
     public void setId(int id) {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "tipus")
+
     public String getTipus() {
         return tipus;
     }
@@ -65,8 +66,7 @@ public class Konyvek {
         this.tipus = tipus;
     }
 
-    @Basic
-    @Column(name = "szerzo")
+
     public String getSzerzo() {
         return szerzo;
     }
@@ -75,8 +75,7 @@ public class Konyvek {
         this.szerzo = szerzo;
     }
 
-    @Basic
-    @Column(name = "cim")
+
     public String getCim() {
         return cim;
     }
@@ -84,8 +83,7 @@ public class Konyvek {
     public void setCim(String cim) {
         this.cim = cim;
     }
-    @Basic
-    @Column(name = "beszerzes")
+
     public Date getBeszerzes() {
         return beszerzes;
     }
@@ -94,8 +92,7 @@ public class Konyvek {
         this.beszerzes = beszerzes;
     }
 
-    @Basic
-    @Column(name = "sorszam")
+
     public String getSorszam() {
         return sorszam;
     }
@@ -104,8 +101,7 @@ public class Konyvek {
         this.sorszam = sorszam;
     }
 
-    @Basic
-    @Column(name = "statusz")
+
     public String getStatusz() {
         return statusz;
     }

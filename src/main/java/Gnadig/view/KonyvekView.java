@@ -2,10 +2,15 @@ package Gnadig.view;
 
 import Gnadig.model.Konyvek;
 import Gnadig.service.KonyvService;
+import org.hibernate.service.spi.InjectService;
+import org.primefaces.event.CellEditEvent;
+import org.primefaces.event.RowEditEvent;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -19,6 +24,7 @@ import java.util.ArrayList;
         private Konyvek editedKonyv = new Konyvek();
         private boolean konyvekIsEdited = false;
         private Konyvek ujKonyv = new Konyvek();
+
 
         @ManagedProperty("#{konyvService}")
         private KonyvService service;
@@ -56,7 +62,28 @@ import java.util.ArrayList;
             this.service = service;
         }
 
+      /*  public void onRowEdit(RowEditEvent<Konyvek> event) {
+            FacesMessage msg = new FacesMessage("Konyvek Edited", event.getObject().getIdToString());
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+            //konyvek.set(event.getObject().getId(),event.getObject());
 
+
+        }
+
+        public void onRowCancel(RowEditEvent<Konyvek> event) {
+            FacesMessage msg = new FacesMessage("Edit Cancelled", event.getObject().getIdToString());
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
+
+        public void onCellEdit(CellEditEvent event) {
+            Object oldValue = event.getOldValue();
+            Object newValue = event.getNewValue();
+
+            if(newValue != null && !newValue.equals(oldValue)) {
+                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cell Changed", "Old: " + oldValue + ", New:" + newValue);
+                FacesContext.getCurrentInstance().addMessage(null, msg);
+            }
+        }*/
 
         //Getters and Setters
 

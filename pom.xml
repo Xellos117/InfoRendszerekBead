@@ -12,6 +12,15 @@
         <maven.compiler.source>1.8</maven.compiler.source>
     </properties>
 
+    <!-- Needed for the cool themes -->
+    <repositories>
+        <repository>
+            <id>prime-repo</id>
+            <name>Prime Repo</name>
+            <url>http://repository.primefaces.org</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
         <dependency>
@@ -44,6 +53,12 @@
             <version>2.4.0</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.primefaces.themes/all-themes -->
+        <dependency>
+            <groupId>org.primefaces.themes</groupId>
+            <artifactId>all-themes</artifactId>
+            <version>1.0.9</version>
+        </dependency>
 
 
     </dependencies>
