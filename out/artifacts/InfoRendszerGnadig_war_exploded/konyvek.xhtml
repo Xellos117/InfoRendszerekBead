@@ -18,7 +18,7 @@
                              paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                              rowsPerPageTemplate="5,10,15">
 
-                    <p:column filterBy="#{konyvek.statusz}" headerText="Státusz">
+                    <p:column filterBy="#{konyvek.statusz}" headerText="Státusz"  filterMatchMode="contains">
                         <h:outputText value="#{konyvek.statusz}" rendered="#{konyvek.id != konyvView.editedKonyv.id}"/>
 
                         <p:selectOneMenu value="#{konyvView.editedKonyv.statusz}" size="13" rendered="#{konyvek.id == konyvView.editedKonyv.id}">
@@ -27,17 +27,17 @@
                         </p:selectOneMenu>
                     </p:column>
 
-                    <p:column filterBy="#{konyvek.szerzo}" headerText="Szerzo">
+                    <p:column filterBy="#{konyvek.szerzo}" headerText="Szerzo"  filterMatchMode="contains">
                         <h:outputText value="#{konyvek.szerzo}" rendered="#{konyvek.id != konyvView.editedKonyv.id}"/>
                         <p:inputText value="#{konyvView.editedKonyv.szerzo}" size="13"  rendered="#{konyvek.id == konyvView.editedKonyv.id}"/>
                     </p:column>
 
-                    <p:column filterBy="#{konyvek.cim}" headerText="Cím">
+                    <p:column filterBy="#{konyvek.cim}" headerText="Cím"  filterMatchMode="contains">
                         <h:outputText value="#{konyvek.cim}" rendered="#{konyvek.id != konyvView.editedKonyv.id}"/>
                         <p:inputText value="#{konyvView.editedKonyv.cim}" size="13"  rendered="#{konyvek.id == konyvView.editedKonyv.id}"/>
                     </p:column>
 
-                    <p:column filterBy="#{konyvek.beszerzes}" headerText="Beszerzés">
+                    <p:column filterBy="#{konyvek.beszerzes}" headerText="Beszerzés"  filterMatchMode="contains">
                         <h:outputText value="#{konyvek.beszerzes}" rendered="#{konyvek.id != konyvView.editedKonyv.id}">
                             <f:convertDateTime pattern="yyyy.MM.dd" />
                         </h:outputText>
@@ -46,7 +46,7 @@
                         </p:inputMask>
                     </p:column>
 
-                    <p:column filterBy="#{konyvek.sorszam}" headerText="Sorszám">
+                    <p:column filterBy="#{konyvek.sorszam}" headerText="Sorszám"  filterMatchMode="contains">
                         <h:outputText value="#{konyvek.sorszam}" rendered="#{konyvek.id != konyvView.editedKonyv.id}"/>
                         <p:inputText value="#{konyvView.editedKonyv.sorszam}" size="13" rendered="#{konyvek.id == konyvView.editedKonyv.id}"/>
                     </p:column>

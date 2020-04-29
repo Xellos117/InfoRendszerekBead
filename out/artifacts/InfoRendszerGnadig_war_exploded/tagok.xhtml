@@ -18,16 +18,16 @@
                              paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                              rowsPerPageTemplate="5,10,15">
 
-                    <p:column filterBy="#{tagok.nev}" headerText="Név">
+                    <p:column filterBy="#{tagok.nev}" headerText="Név"  filterMatchMode="contains">
                         <h:outputText value="#{tagok.nev}"/>
                     </p:column>
-                    <p:column filterBy="#{tagok.telefonszam}" headerText="Telefon">
+                    <p:column filterBy="#{tagok.telefonszam}" headerText="Telefon"  filterMatchMode="contains">
                         <h:outputText value="#{tagok.telefonszam}"/>
                     </p:column>
-                    <p:column filterBy="#{tagok.szemelyig}" headerText="Szemelyig">
+                    <p:column filterBy="#{tagok.szemelyig}" headerText="Szemelyig"  filterMatchMode="contains">
                         <h:outputText value="#{tagok.szemelyig}"/>
                     </p:column>
-                    <p:column filterBy="#{tagok.lakcim}" headerText="Lakcím">
+                    <p:column filterBy="#{tagok.lakcim}" headerText="Lakcím"  filterMatchMode="contains">
                         <h:outputText value="#{tagok.lakcim}"/>
                     </p:column>
 
