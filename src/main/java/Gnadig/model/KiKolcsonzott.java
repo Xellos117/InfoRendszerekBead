@@ -13,7 +13,7 @@ public class KiKolcsonzott {
     private String konyvStatusz;
     private Date kolcsonzesKezdete;
     private Date KolcsonzesVege;
-    //private String konyvTipus;
+
 
     public KiKolcsonzott(int id, int tagID, int konyvID, String konyvSzerzo, String konyvCim, String konyvSorszam, String konyvStatusz, Date kolcsonzesKezdete, Date kolcsonzesVege) {
         this.id = id;
@@ -25,8 +25,9 @@ public class KiKolcsonzott {
         this.konyvStatusz = konyvStatusz;
         this.kolcsonzesKezdete = kolcsonzesKezdete;
         KolcsonzesVege = kolcsonzesVege;
-        //this.konyvTipus = konyvTipus;
     }
+
+
 
     public int getId() {
         return id;

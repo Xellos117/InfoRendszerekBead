@@ -77,25 +77,19 @@
                              paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                              rowsPerPageTemplate="5,10,15">
 
-                    <p:column filterBy="#{konyvek.tipus}" headerText="Típus">
-                        <h:outputText value="#{konyvek.tipus}" />
+
+                    <p:column  headerText="Szerző">
+                        <h:outputText value="#{kolcsonzes.konyvSzerzo}" />
                     </p:column>
-                    <p:column filterBy="#{konyvek.szerzo}" headerText="Szerző">
-                        <h:outputText value="#{konyvek.szerzo}" />
+                    <p:column  headerText="Cím">
+                        <h:outputText value="#{kolcsonzes.konyvCim}" />
                     </p:column>
-                    <p:column filterBy="#{konyvek.cim}" headerText="Cím">
-                        <h:outputText value="#{konyvek.cim}" />
+
+                    <p:column  headerText="Sorszám">
+                        <h:outputText value="#{kolcsonzes.konyvSorszam}" />
                     </p:column>
-                    <p:column filterBy="#{konyvek.beszerzes}" headerText="Beszerzes">
-                        <h:outputText value="#{konyvek.beszerzes}" >
-                            <f:convertDateTime pattern="yyyy-MM-dd" />
-                        </h:outputText>
-                    </p:column>
-                    <p:column filterBy="#{konyvek.sorszam}" headerText="Sorszám">
-                        <h:outputText value="#{konyvek.sorszam}" />
-                    </p:column>
-                    <p:column filterBy="#{konyvek.statusz}" headerText="Státusz">
-                        <h:outputText value="#{konyvek.statusz}" />
+                    <p:column  headerText="Státusz">
+                        <h:outputText value="#{kolcsonzes.konyvStatusz}" />
                     </p:column>
 
                     <p:column headerText="Kölcsonzés kezdete">
@@ -104,13 +98,13 @@
                         </h:outputText>
                     </p:column>
                     <p:column headerText="Kölcsönzés vége">
-                        <h:outputText value="#{kolcsonzes.getKolcsonzesVege}" style="#{tagView.getNapokHatarIdoig(kolcsonzes.getKolcsonzesVege) > 1 ? 'color:red;' : 'color:blue;'}">
+                        <h:outputText value="#{kolcsonzes.kolcsonzesVege}" style="#{tagView.getNapokHatarIdoig(kolcsonzes.kolcsonzesVege) > 1 ? 'color:red;' : 'color:blue;'}">
                             <f:convertDateTime pattern="yyyy-MM-dd" />
                         </h:outputText>
                     </p:column>
                     <p:column headerText="Késés">
-                        <h:outputText value="#{tagView.getNapokHatarIdoig(kolcsonzes.getKolcsonzesVege) > 1 ? 'Késik!' : 'Nem Késik'}"
-                                      style="#{tagView.getNapokHatarIdoig(kolcsonzes.getKolcsonzesVege) > 1 ? 'color:red;' : 'color:blue;'}"/>
+                        <h:outputText value="#{tagView.getNapokHatarIdoig(kolcsonzes.kolcsonzesVege) > 1 ? 'Késik!' : 'Nem Késik'}"
+                                      style="#{tagView.getNapokHatarIdoig(kolcsonzes.kolcsonzesVege) > 1 ? 'color:red;' : 'color:blue;'}"/>
                     </p:column>
                     <p:column headerText="Kölcsönzés törlése">
                         <p:commandButton value="Visszahoz" action="#{tagView.deleteRenting(kolcsonzes)}"/>
