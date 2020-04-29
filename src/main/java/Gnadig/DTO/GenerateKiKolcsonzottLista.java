@@ -44,6 +44,7 @@ public class GenerateKiKolcsonzottLista {
                                 konyv.getStatusz(),
                                 kolcson.getKezdes(),
                                 kolcson.getHatarido());
+
                         kiKolcsonzottList.add(kiKolcsonzott);
                     }
                 }

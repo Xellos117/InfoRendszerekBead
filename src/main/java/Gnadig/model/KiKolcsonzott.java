@@ -12,9 +12,10 @@ public class KiKolcsonzott {
     private String konyvSorszam;
     private String konyvStatusz;
     private Date kolcsonzesKezdete;
-    private Date getKolcsonzesVege;
+    private Date KolcsonzesVege;
+    //private String konyvTipus;
 
-    public KiKolcsonzott(int id, int tagID, int konyvID, String konyvSzerzo, String konyvCim, String konyvSorszam, String konyvStatusz, Date kolcsonzesKezdete, Date getKolcsonzesVege) {
+    public KiKolcsonzott(int id, int tagID, int konyvID, String konyvSzerzo, String konyvCim, String konyvSorszam, String konyvStatusz, Date kolcsonzesKezdete, Date kolcsonzesVege) {
         this.id = id;
         this.tagID = tagID;
         this.konyvID = konyvID;
@@ -23,7 +24,8 @@ public class KiKolcsonzott {
         this.konyvSorszam = konyvSorszam;
         this.konyvStatusz = konyvStatusz;
         this.kolcsonzesKezdete = kolcsonzesKezdete;
-        this.getKolcsonzesVege = getKolcsonzesVege;
+        KolcsonzesVege = kolcsonzesVege;
+        //this.konyvTipus = konyvTipus;
     }
 
     public int getId() {
@@ -90,11 +92,13 @@ public class KiKolcsonzott {
         this.kolcsonzesKezdete = kolcsonzesKezdete;
     }
 
-    public Date getGetKolcsonzesVege() {
-        return getKolcsonzesVege;
+    public Date getKolcsonzesVege() {
+        return KolcsonzesVege;
     }
 
-    public void setGetKolcsonzesVege(Date getKolcsonzesVege) {
-        this.getKolcsonzesVege = getKolcsonzesVege;
+    public void setKolcsonzesVege(Date kolcsonzesVege) {
+        this.KolcsonzesVege = kolcsonzesVege;
     }
+
+
 }
